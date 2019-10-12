@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 
 void list_users(avl_tree t) {
@@ -248,7 +249,7 @@ int profundidade(avl_tree t)
 
 
 bool add_new_user(avl_tree * t, avl_info x) {
-    if (*t == NULL) {
+    if ((*t) == NULL) {
         if ((*t = (avl_tree) malloc(sizeof(struct avl_no))) == NULL) {
             fprintf(stderr, "Erro de alocacao de memoria!\n");
             exit(1);

@@ -8,7 +8,7 @@
 #define _LISTAORD_H
 #include <stdbool.h>
 
-typedef char * lst_info;
+typedef char lst_info[21];
 typedef struct lst_no * lst_ptr;
 struct lst_no {
     lst_info dado;

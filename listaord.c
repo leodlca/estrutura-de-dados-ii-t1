@@ -10,7 +10,6 @@
 
 void lst_init(lst_ptr * l)
 {
-    printf("Criando a lista de amigos");
     *l = NULL;
 }
 

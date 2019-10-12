@@ -20,7 +20,7 @@ void limpa_avl_info(avl_info * x) {
 
 int main() {
     int escolha = 1;
-    avl_tree t;
+    avl_tree t = NULL;
     avl_info usuario_A;
     avl_info usuario_B;
     char username[21];

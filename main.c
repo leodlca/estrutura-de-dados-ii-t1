@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include <string.h>
+#include <string.h> 
+#include <ctype.h>
 #include "avl.h"
 
 //bool add_friend(avl_tree t, char * username, char * friendname);
-
 void wait_and_clear() {
     printf("Pressione qualquer tecla para continuar...");
     getchar();
@@ -16,6 +16,48 @@ void limpa_avl_info(avl_info * x) {
     strcpy(x->usuario, "");
     strcpy(x->nome_completo, "");
     x->sexo = ' ';
+}
+
+void load_users(avl_tree * t, char * filename){
+    FILE * arq; // Arquivo l�gico
+    avl_info user;
+    int lin = 1;
+    int linha = 1;
+    char info[128];
+    char * amigos;
+    char * token;
+    // printf("Digite o nome do arquivo: ");
+    // scanf(" %60[^\n]", filename);
+    if ((arq = fopen(filename, "r")) == NULL) {
+        fprintf(stderr,"Erro na abertura do arquivo %s\n", filename);
+        exit(1);
+    }
+
+    while (fgets(info, 128, arq)) {
+        if (linha % 2 != 0){
+        token = strtok(info, ";");
+        while (token != NULL) {
+            printf("Entrou no while, %s\n", token);
+            if (lin == 1) strcpy(user.usuario,token);
+            else if(lin == 2) strcpy(user.nome_completo,token);
+            else user.sexo = token[0];
+            lin++;
+            token = strtok(NULL, ";");
+        }
+        if(!add_new_user(t, user)){
+            printf("Erro!\n\n");
+            exit(1);
+        }
+        if(lin < 3){
+            printf("Erro\n");
+            exit(1);
+        }
+        lin = 1;
+        }
+        linha++;
+        
+    }
+    fclose(arq);
 }
 
 int main() {
@@ -54,6 +96,7 @@ int main() {
                 return 1;
 
             case 1:
+                load_users(&t, "users.txt");
                 break;
 
             case 2:
@@ -111,6 +154,8 @@ int main() {
     }
     return 0;
 }
+
+
 
 // bool add_friend(avl_tree t, char * username, char * friendname) {
 //     if(t != NULL) {

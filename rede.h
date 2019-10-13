@@ -15,6 +15,9 @@
 #include "listaord.h"
 
 
+char filename[31];
+
+
 #define DEFAULT_FILENAME "rede.txt"
 
 

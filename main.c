@@ -55,7 +55,10 @@ int main() {
 
         switch (escolha) {
             case 1:
-                load_users(&t, DEFAULT_FILENAME);
+                printf("Insira o caminho completo e nome do arquivo: ");
+                scanf(" %31[^\n]", filename);
+
+                load_users(&t, filename);
 
                 printf("\nInformacoes carregadas com sucesso!\n\n");
                 wait_and_clear();
@@ -131,14 +134,19 @@ int main() {
                 break;
 
             case 7:
-                printf("As configuracoes da rede serao guardadas no arquivo %s.\n", DEFAULT_FILENAME);
-                printf("Quaisquer dados contidos no arquivo serao sobrescritos. Deseja continuar? (S/N) ");
-                scanf(" %c[^\n]", &deseja_continuar);
-
-                if(deseja_continuar == 'S') {
-                    save_users(t);
-                    printf("\nConfiguracoes armazenadas com sucesso!\n\n");
+                if(strcmp(filename, "") == 0) {
+                    printf("Nenhum arquivo foi informado na opcao 1, encerrando programa sem salvar.\n\n");
                     wait_and_clear();
+                } else {
+                    printf("As configuracoes da rede serao guardadas no arquivo %s.\n", DEFAULT_FILENAME);
+                    printf("Quaisquer dados contidos no arquivo serao sobrescritos. Deseja continuar? (S/N) ");
+                    scanf(" %c[^\n]", &deseja_continuar);
+                    
+                    if(deseja_continuar == 'S') {
+                        save_users(t);
+                        printf("\nConfiguracoes armazenadas com sucesso!\n\n");
+                        wait_and_clear();
+                    }
                 }
 
                 exit(1);

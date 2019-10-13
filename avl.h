@@ -17,6 +17,7 @@
 #include <stdbool.h>
 #include "listaord.h"
 
+
 /*
  * Definicao da estrutura de dados
  */

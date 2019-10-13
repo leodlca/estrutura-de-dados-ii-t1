@@ -23,8 +23,8 @@ void load_users(avl_tree * t, char * filename){
     int k = 0;
     int i = 0;
 
-    char info[1000];
     char * token;
+    char info[1000];
     char users[1000][1000];
     char friends[1000][1000];
 
@@ -177,7 +177,7 @@ bool add_new_user(avl_tree * t, avl_info x) {
         (*t)->esq = (*t)->dir = NULL;
         (*t)->bal = 0;
     }
-    else if (strcmp(x.usuario,(*t)->dado.usuario) < 0) { // Inserir a esquerda
+    else if (strcmp(x.usuario,(*t)->dado.usuario) < 0) {
         add_new_user(&(*t)->esq, x);
             switch ((*t)->bal) {
                 case 1: (*t)->bal = 0;
@@ -185,15 +185,15 @@ bool add_new_user(avl_tree * t, avl_info x) {
                 case 0: (*t)->bal = -1;
                         break;
                 case -1:
-                    // Rebalanceamento
-                    if ((*t)->esq->bal == -1) { //Rotacao simples p/ direita
+                    
+                    if ((*t)->esq->bal == -1) {
                         rotacao_dir(t);
-                        (*t)->dir->bal = 0; //Ajusta o fator de balanceamento
+                        (*t)->dir->bal = 0;
                     }
-                    else { // Rotacao dupla para direita
+                    else {
                         rotacao_esq(&(*t)->esq);
                         rotacao_dir(t);
-                        // Ajusta o fator de balanceamento
+                        
                         if ((*t)->bal == -1) (*t)->dir->bal = 1;
                         else (*t)->dir->bal = 0;
                         if ((*t)->bal == 1) (*t)->esq->bal = -1;
@@ -201,39 +201,39 @@ bool add_new_user(avl_tree * t, avl_info x) {
                     }
                     (*t)->bal = 0;
                     break;
-            } // fim do switch
-    } // fim do if
-    else if (strcmp(x.usuario,(*t)->dado.usuario) > 0) { // Inserir a direita
+            }
+    }
+    else if (strcmp(x.usuario,(*t)->dado.usuario) > 0) {
         add_new_user(&(*t)->dir, x);
         switch ((*t)->bal) {
             case -1: (*t)->bal = 0;
                         break;
             case 0 : (*t)->bal = 1;
                         break;
-            case 1: // Rebalanceamento
-                if ((*t)->dir->bal == 1) { // Rotacao simples p/ esquerda
+            case 1:
+                if ((*t)->dir->bal == 1) {
                     rotacao_esq(t);
-                    // Ajusta o fator de balanceamento
+                    
                     (*t)->esq->bal = 0;
                 }
-                else { // Rotacao dupla para esquerda
+                else {
                     rotacao_dir(&(*t)->dir);
                     rotacao_esq(t);
-                    // Ajusta o fator de balanceamento
+                    
                     if ((*t)->bal == 1) (*t)->esq->bal = -1;
                     else (*t)->esq->bal = 0;
                     if ((*t)->bal == -1) (*t)->dir->bal = 1;
                     else (*t)->dir->bal = 0;
-                } // fim do else
+                } 
                 (*t)->bal = 0;
                 break;
-        } // fim do switch
+        }
     } else if(strcmp(x.usuario, (*t)->dado.usuario) == 0) {
         return false;
     }
 
     return true;
-} // fim de add_new_user
+}
 
 
 void save_users(avl_tree t) {

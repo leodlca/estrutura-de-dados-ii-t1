@@ -1,5 +1,8 @@
-rede: main.o avl.o listaord.o
-	gcc -o rede main.o avl.o listaord.o -g
+rede: main.o rede.o avl.o listaord.o
+	gcc -o rede main.o rede.o avl.o listaord.o -g
+
+rede.o: rede.c rede.h
+	gcc -c rede.c -g
 	
 avl.o: avl.c avl.h
 	gcc -c avl.c -g 

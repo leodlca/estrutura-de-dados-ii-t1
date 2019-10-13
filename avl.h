@@ -3,17 +3,23 @@
  * de suas operacoes.
  *
  * Ciro C. Trindade
- * 30/Set/2019
+ * 30/09/2019
+ * 
+ * Adaptado por Leonardo Amorim e Luis Durante
+ * 14/10/2019 
  */
 
 
 #ifndef _AVL_H
 #define _AVL_H
 
+
 #include <stdbool.h>
 #include "listaord.h"
 
-// Definicao da estrutura de dados
+/*
+ * Definicao da estrutura de dados
+ */
 typedef struct {
     char usuario[21];
     char nome_completo[51];
@@ -21,7 +27,9 @@ typedef struct {
     lst_ptr amigos;
 } avl_info;
 
+
 typedef struct avl_no * avl_tree;
+
 
 struct avl_no {
     avl_info dado;
@@ -29,36 +37,6 @@ struct avl_no {
     avl_tree dir;
     int bal; // balanceamento do no
 };
-
-
-/*
- * Imprime a arvore AVL t atraves de um percurso em ordem.
- */
-void list_users(avl_tree t);
-
-
-/*
- */
-avl_tree search_username(avl_tree t, char * usuario);
-
-
-/*
- */
-void list_friends(avl_tree t, char * username);
-
-
-/*
- * Verifica se a palavra x ja ocorreu na carvore AVL t; 
- * caso afirmativo, seu contador e incrementado; caso contrario, 
- * x e inserida em t e h sinaliza que houve um aumento da
- * altura de t.
- */
-bool add_new_user(avl_tree * t, avl_info x);
-
-
-/*
- */
-bool add_friend(avl_tree t, char * username, char * friendname);
 
 
 /* 
@@ -104,16 +82,6 @@ void balance_dir(avl_tree *, bool *);
  * houve uma diminuicao da altura de t.
  */
 avl_tree get_min(avl_tree * t, bool * h);
-
-
-/*
- */
-int profundidade(avl_tree);
-
-
-/*
- */
-bool add_new_user(avl_tree * t, avl_info x);
 
 
 #endif

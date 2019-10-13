@@ -1,8 +1,8 @@
 joao;Joao Da Silva;m
-pedro;maria,luis
+pedro;maria;luis
 pedro;Pedro Souza;m
-joao,luis
+joao;luis
 maria;Maria Eugenia;f
 joao
 luis;luis legal;m
-joao,pedro
+joao;pedro

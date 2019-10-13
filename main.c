@@ -23,40 +23,66 @@ void load_users(avl_tree * t, char * filename){
     avl_info user;
     int lin = 1;
     int linha = 1;
-    char info[128];
-    char * amigos;
+    char info[1000];
     char * token;
-    // printf("Digite o nome do arquivo: ");
-    // scanf(" %60[^\n]", filename);
+    char users[1000][1000];
+    int k = 0;
+    char friends[1000][1000];
     if ((arq = fopen(filename, "r")) == NULL) {
         fprintf(stderr,"Erro na abertura do arquivo %s\n", filename);
         exit(1);
     }
+    int i = 0;
 
-    while (fgets(info, 128, arq)) {
+    while (fgets(info, 1000, arq)) {
         if (linha % 2 != 0){
-        token = strtok(info, ";");
-        while (token != NULL) {
-            printf("Entrou no while, %s\n", token);
-            if (lin == 1) strcpy(user.usuario,token);
-            else if(lin == 2) strcpy(user.nome_completo,token);
-            else user.sexo = token[0];
-            lin++;
-            token = strtok(NULL, ";");
-        }
-        if(!add_new_user(t, user)){
-            printf("Erro!\n\n");
-            exit(1);
-        }
-        if(lin < 3){
-            printf("Erro\n");
-            exit(1);
+            token = strtok(info, ";");
+            while (token != NULL) {
+                if (lin == 1) strcpy(user.usuario,token);
+                else if(lin == 2) strcpy(user.nome_completo,token);
+                else user.sexo = token[0];
+                lin++;
+                token = strtok(NULL, ";");
+            }
+            if(lin < 3){
+                printf("Erro\n");
+                exit(1);
+            }
+            if(!add_new_user(t, user)){
+                printf("Erro!\n\n");
+                exit(1);
+            }
+            strcpy(users[k],user.usuario);
+            k++;
+        } 
+        else{
+            // info[strlen(info-1)] = '\0';
+            int j = 0;
+            for (j = 0; j < strlen(info); j++)
+            {
+                if(info[j] == '\n'){
+                    info[j] = '\0';
+                }
+            }
+            
+            printf("%s.", info);
+            strcpy(friends[i],info);
+            i++;
         }
         lin = 1;
-        }
         linha++;
-        
     }
+
+    for (i = 0; i < k; i++){
+        token = strtok(friends[i], ";");
+        while (token != NULL) {
+           if(!add_friend(*t, users[i], token)) {
+                printf("\nErro\n\n");
+            }
+            token = strtok(NULL, ";");
+        }
+    }
+    
     fclose(arq);
 }
 
@@ -75,7 +101,7 @@ int main() {
         //limpa_avl_info(&usuario_A);
         //limpa_avl_info(&usuario_B);
 
-        system("cls || clear");
+        // system("cls || clear");
         printf("=========================================\n");
         printf("Rede Social\n\n");
         printf("0 - Encerrar programa\n"); //feito

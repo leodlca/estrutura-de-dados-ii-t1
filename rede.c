@@ -235,8 +235,23 @@ bool add_new_user(avl_tree * t, avl_info x) {
     return true;
 }
 
+void mount_file(avl_tree t, FILE * arq){
+    if (t != NULL) {
+        fprintf(arq, "%s;%s;%c", t->dado.usuario,t->dado.nome_completo,t->dado.sexo);
+        mount_file(t->esq, arq);
+        mount_file(t->dir, arq);
+    }
+}
+
 
 void save_users(avl_tree t) {
+    FILE * arq;
+    avl_info user;
+    if ((arq = fopen(DEFAULT_FILENAME, "w")) == NULL) {
+        fprintf(stderr,"Erro na abertura do arquivo %s\n", filename);
+        exit(1);
+    }
+    mount_file(t,arq);
 
 }
 

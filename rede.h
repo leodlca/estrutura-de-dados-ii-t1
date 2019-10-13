@@ -18,7 +18,7 @@
 char filename[31];
 
 
-#define DEFAULT_FILENAME "rede.txt"
+#define DEFAULT_FILENAME "red.txt"
 
 
 /*

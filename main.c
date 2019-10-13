@@ -1,4 +1,8 @@
-/*
+/* main.c
+ * Interface e arquivo principal do projeto Rede Social de EDII.
+ *
+ * Leonardo Amorim e Luis Durante
+ * 14/10/2019
  */
 
 
@@ -86,7 +90,9 @@ int main() {
                 printf("Insira o nome de usuario do usuario B: ");
                 scanf(" %21[^\n]", usuario_B.usuario);
 
-                if (add_friend(t, usuario_A.usuario, usuario_B.usuario)) {
+                if(strcmp(usuario_A.usuario, usuario_B.usuario) == 0){
+                    printf("\nUm usuario nao pode adicionar a si mesmo.\n\n");
+                } else if (add_friend(t, usuario_A.usuario, usuario_B.usuario)) {
                     printf("\nAmigo inserido com sucesso!\n\n");
                 } else {
                     printf("\nOcorreu um erro ao tentar inserir um amigo no usuario informado.\n\n");

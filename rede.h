@@ -18,9 +18,6 @@
 char filename[31];
 
 
-#define DEFAULT_FILENAME "red.txt"
-
-
 /*
  * Carrega configuracao de uma rede social que fora salva
  * no arquivo (filename), num formato especifico.
@@ -33,14 +30,6 @@ void load_users(avl_tree * t, char * filename);
  * dos usuarios cadastrados na rede social.
  */
 void list_users(avl_tree t);
-
-
-/*
- * Funcao auxiliar que busca e retorna a estrutura de um usuario
- * cujo atributo 'usuario' e igual a (username). Retorna NULL 
- * caso nao exista um usuario cadastrado com esse (username).
- */
-avl_tree search_username(avl_tree t, char * username);
 
 
 /*

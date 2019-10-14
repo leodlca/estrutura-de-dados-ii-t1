@@ -138,10 +138,10 @@ int main() {
                     printf("Nenhum arquivo foi informado na opcao 1, encerrando programa sem salvar.\n\n");
                     wait_and_clear();
                 } else {
-                    printf("As configuracoes da rede serao guardadas no arquivo %s.\n", DEFAULT_FILENAME);
+                    printf("As configuracoes da rede serao guardadas no arquivo %s.\n", filename);
                     printf("Quaisquer dados contidos no arquivo serao sobrescritos. Deseja continuar? (S/N) ");
                     scanf(" %c[^\n]", &deseja_continuar);
-                    
+
                     if(deseja_continuar == 'S') {
                         save_users(t);
                         printf("\nConfiguracoes armazenadas com sucesso!\n\n");

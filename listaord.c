@@ -83,10 +83,10 @@ lst_ptr lst_find(lst_ptr l, lst_info x) {
 void lst_print(lst_ptr l) {
     printf("\n[ ");
     while (l != NULL) {
-        printf("%s, ", l->dado);
+        printf("%s,", l->dado);
         l = l->prox;
     }
-    printf("\b\b ]\n\n");
+    printf("\b ]\n\n");
 }
 
 

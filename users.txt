@@ -1,8 +1,14 @@
+kelly;kelly top;F
+lontra
 joao;Joao Da Silva;m
-pedro;maria;luis
-pedro;Pedro Souza;m
-joao;luis
-maria;Maria Eugenia;f
-joao
+luis;maria;pedro
+geovanna;geovanna daora;F
+
 luis;luis legal;m
 joao;pedro
+lontra;lontra loca;F
+
+maria;Maria Eugenia;f
+joao
+pedro;Pedro Souza;m
+joao;luis

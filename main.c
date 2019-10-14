@@ -47,7 +47,7 @@ int main() {
         printf("4 - Listar usuarios\n");
         printf("5 - Listar amigos\n");
         printf("6 - Remover usuario\n");
-        printf("7 - Finalizar o programa\n\n");
+        printf("7 - Finalizar o programa (e salvar rede)\n\n");
         printf("Insira sua escolha: ");
         scanf("%d", &escolha);
 

@@ -9,7 +9,7 @@ Trabalho 1 de Estrutura de Dados 2
 - ~~Listar usuarios~~
 - ~~Listar amigos~~
 - ~~Remover usuario~~
-- Finalizar o programa (e salvar rede)
+- ~~Finalizar o programa (e salvar rede)~~
 
 ## TODO (after core)
 - Checar se todas as funções estão dentro dos conformes estabelecidos pelo Ciro.

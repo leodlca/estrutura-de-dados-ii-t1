@@ -142,7 +142,7 @@ int main() {
                     printf("Quaisquer dados contidos no arquivo serao sobrescritos. Deseja continuar? (S/N) ");
                     scanf(" %c[^\n]", &deseja_continuar);
 
-                    if(deseja_continuar == 'S') {
+                    if(deseja_continuar == 'S' || deseja_continuar == 's') {
                         save_users(t);
                         printf("\nConfiguracoes armazenadas com sucesso!\n\n");
                         wait_and_clear();
